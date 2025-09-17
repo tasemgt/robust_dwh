@@ -16,19 +16,19 @@ WARNING:
 USE master;
 GO
 
--- Drop and recreate the 'DataWarehouse' database
-IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DataWarehouse')
+-- Drop and recreate the 'robust_dwh' database
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'robust_dwh')
 BEGIN
-    ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-    DROP DATABASE DataWarehouse;
+    ALTER DATABASE robust_dwh SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE robust_dwh;
 END;
 GO
 
 -- Create the 'DataWarehouse' database
-CREATE DATABASE DataWarehouse;
+CREATE DATABASE robust_dwh;
 GO
 
-USE DataWarehouse;
+USE robust_dwh;
 GO
 
 -- Create Schemas
