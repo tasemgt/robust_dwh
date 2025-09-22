@@ -11,6 +11,6 @@ services:
       - "1433:1433"
     volumes:
       - mssql_data:/var/opt/mssql # Persist SQL Server data
-      - ~/Desktop/Projectiles/data_engineering/portfolio/warehouse/project/datasets:/datasets # Mount datasets directory
+      - ~/Desktop/Projectiles/data_engineering/portfolio/warehouse/project/robust_dwh/datasets:/datasets # Mount datasets directory
 volumes:
   mssql_data:

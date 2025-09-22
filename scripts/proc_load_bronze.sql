@@ -24,6 +24,7 @@ Usage Example:
 CREATE OR ALTER PROCEDURE bronze.load_bronze_data AS
 BEGIN
     DECLARE @start_time DATETIME, @end_time DATETIME, @total_start_time DATETIME, @total_end_time DATETIME;
+    -- DECLARE @file_path NVARCHAR(255);
     BEGIN TRY
         SET @total_start_time = GETDATE();
         PRINT '==============================================================';
@@ -61,8 +62,9 @@ BEGIN
         with (
             FIRSTROW = 2,
             FIELDTERMINATOR = ',',
-            TABLOCK --locks the table for the duration of the bulk insert operation
-        );
+            TABLOCK, --locks the table for the duration of the bulk insert operation
+            KEEPNULLS  -- This preserves empty fields as NULL
+        )
         SET @end_time = GETDATE();
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR(10)) + ' seconds';
         PRINT '----------------------------------------------';
@@ -122,6 +124,8 @@ BEGIN
         DROP TABLE bronze.crm_sales_details_staging;
         SET @end_time = GETDATE();
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR(10)) + ' seconds';
+
+        
 
         PRINT '--------------------------------------------------------------';
         PRINT 'Loading data into ERP System Tables';

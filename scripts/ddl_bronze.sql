@@ -32,8 +32,8 @@ create table bronze.crm_prd_info(
     prd_nm NVARCHAR(50),
     prd_cost INT,
     prd_line NVARCHAR(50),
-    prd_start_dt DATE,
-    prd_end_dt DATE
+    prd_start_dt DATE NULL,
+    prd_end_dt DATE NULL
 );
 
 -- 3rd Table
