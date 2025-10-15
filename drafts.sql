@@ -160,6 +160,8 @@ OR sls_sales IS NULL OR sls_quantity IS NULL OR sls_price IS NULL
 OR sls_sales <= 0 OR sls_quantity <= 0 OR sls_price <= 0
 ORDER BY sls_sales, sls_quantity, sls_price
 
+-- WHEN sls_order_dt = 0 OR LEN(sls_order_dt) != 8 THEN NULL
+
 
 -- 3RD Silver Insert!!!
 
@@ -295,7 +297,7 @@ SELECT * FROM silver.erp_px_cat_g1v2
 
 
 -- GOLDDDDD LAYER!!!!!
--- No duplicates after joins check
+-- No duplicates after joins a check below
 
 SELECT cst_id, COUNT(*) FROM
 (SELECT
